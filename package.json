@@ -2,10 +2,11 @@
   "name": "fec",
   "version": "1.0.0",
   "description": "fec",
-  "main": "/public/app.js",
+  "main": "app.js",
   "scripts": {
     "test": "test",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
