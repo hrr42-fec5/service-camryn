@@ -6,13 +6,14 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      restaurant: null
+      showAll: false
     }
   }
 
   render() {
     return (
-      <div>React IS rendering!!</div>
+      <div className="component-title">Zagat mentions of Sari Sari Store</div>
+      // render first two mentions if showAll is false
     )
   }
 }
