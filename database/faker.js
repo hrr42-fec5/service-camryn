@@ -5,6 +5,7 @@ const faker = require('faker');
   // articles range from 4-6 per restaurant & number from 1-20
 // generate 20 articles
   // id increments 1-20
+  // image
   // title
   // body
 
@@ -34,7 +35,7 @@ var generateArticles = function(num, cb) {
   for (var i = 0; i<num; i++) {
     var obj = {
       id: (i+1),
-      image: faker.image.food(),
+      image: `https://creidfecimages.s3-us-west-1.amazonaws.com/photo${i+1}.jpeg`,
       title: faker.lorem.words(),
       body: faker.lorem.paragraphs()
     }

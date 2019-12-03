@@ -12,7 +12,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="component-title">Zagat mentions of Sari Sari Store</div>
+      <div className="component-title">Zagat mentions</div>
       // render first two mentions if showAll is false
     )
   }
