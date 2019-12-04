@@ -6,15 +6,19 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      restaurant: null,
+      articleIds: null,
       showAll: false
     }
   }
 
   render() {
-    return (
-      <div className="component-title">Zagat mentions</div>
-      // render first two mentions if showAll is false
-    )
+    if (this.state.showAll === false) {
+      return (
+        <div className="component-title">Zagat mentions</div>
+        // render first two mentions if showAll is false
+      )
+    }
   }
 }
 

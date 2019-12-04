@@ -1,5 +1,6 @@
 const faker = require('faker');
-const Article = require('./schema.js');
+const Article = require('./articleSchema.js');
+const Restaurant = require('./restaurantSchema.js');
 
 var pickArticle = function () {
   return Math.floor(Math.random() * 20);
@@ -19,7 +20,7 @@ var generateRestaurants = function(num) {
     restaurants.push(obj);
   }
 
-  db.Restaurant.insertMany(restaurants)
+  Restaurant.insertMany(restaurants)
     .then((docs) => {
       console.log("Restaurants successfully written to database: ", docs);
     })
@@ -47,13 +48,3 @@ var generateArticles = function(num) {
       console.log(err);
     });
 }
-
-// generateArticles(20);
-
-
-// module.exports.generateRestaurants = generateRestaurants;
-// module.exports.generateArticles = generateArticles;
-
-// test seeding with node
-// var rests = generateRestaurants(2);
-// var arts = generateArticles(2);
