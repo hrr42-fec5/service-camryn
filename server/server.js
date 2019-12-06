@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3003;
-const Restaurant = require('../database/schema.js');
+const db = require('../database/index.js');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());

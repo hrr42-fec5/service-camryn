@@ -1,5 +1,6 @@
 const faker = require('faker');
 const Restaurant = require('./schema.js');
+const db = require('./index.js');
 
 
 var generateRestaurants = function(numR) {
@@ -38,4 +39,4 @@ var generateRestaurants = function(numR) {
     })
 }
 
-generateRestaurants(1);
+generateRestaurants(100);
