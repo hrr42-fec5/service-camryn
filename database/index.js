@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
-const Restaurant = require('./restaurantSchema.js');
-const Article = require('./articleSchema.js');
+const Restaurant = require('./schema.js');
 
 
 mongoose.connect('mongodb://localhost/zagat', {useNewUrlParser: true});
@@ -12,4 +11,4 @@ db.once('open', function() {
   console.log('mongoose is connected!');
 });
 
-exports.db = db;
+module.exports = db;

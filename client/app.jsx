@@ -17,13 +17,12 @@ class App extends React.Component {
 
   componentDidMount() {
     var url = window.location.href;
-    console.log(url);
-    var restaurantId;
+    var restaurantId = url.substring(url.lastIndexOf('/')+1);
     $.ajax({
       type: "GET",
       url: `/api/restaurants/${restaurantId}`,
       success: (data) => {
-        console.log(data);
+        console.log("API req data: ", data);
       },
       error: (error) => {
         console.log("Error mounting component: ", error);
