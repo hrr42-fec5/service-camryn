@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
 const Restaurant = require('./restaurantSchema.js');
+const Article = require('./articleSchema.js');
 
 
 mongoose.connect('mongodb://localhost/zagat', {useNewUrlParser: true});
