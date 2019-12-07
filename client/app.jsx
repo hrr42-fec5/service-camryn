@@ -35,6 +35,13 @@ class App extends React.Component {
     })
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    this.setState({
+      showAll: !this.state.showAll
+    })
+  }
+
   render() {
     if (this.state.showAll === null) {
       return (
@@ -43,18 +50,18 @@ class App extends React.Component {
     } else if (this.state.showAll === false) {
       return (
         <div>
-          <div className="component-title">Zagat mentions</div>
+          <div className="component-title" >Zagat mentions</div>
           <Mentions articles={this.state.articles.slice(0,2)}/>
-          <button type="button">Show All ({this.state.articles.length})</button>
+          <button type="button" onClick={this.handleClick.bind(this)}>Show All ({this.state.articles.length})</button>
         </div>
       )
     }
     else if (this.state.showAll === true) {
       return (
         <div>
-          <div className="component-title">Zagat mentions</div>
+          <div className="component-title" >Zagat mentions</div>
           <Mentions articles={this.state.articles}/>
-          <button type="button">Show Less</button>
+          <button type="button" onClick={this.handleClick.bind(this)}>Show Less</button>
         </div>
       );
     }
