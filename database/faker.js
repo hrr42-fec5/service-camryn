@@ -1,59 +1,42 @@
 const faker = require('faker');
-const Article = require('./schema.js');
+const Restaurant = require('./schema.js');
+const db = require('./index.js');
 
-var pickArticle = function () {
-  return Math.floor(Math.random() * 20);
-}
 
-var generateRestaurants = function(num) {
+var generateRestaurants = function(numR) {
   var restaurants = [];
-  for (var i = 0; i<num; i++) {
+
+  var generateArticles = function(numA) {
+    var arts = [];
+    for (var i = 0; i<numA; i++) {
+      var imgId = Math.floor(Math.random() * 20 + 1);
+      var objA = {
+        image: `https://creidfecimages.s3-us-west-1.amazonaws.com/photo${imgId}.jpeg`,
+        title: faker.lorem.words(),
+        body: faker.lorem.paragraphs()
+      }
+      arts.push(objA);
+    }
+    return arts;
+  }
+
+  for (var j = 0; j<numR; j++) {
     var numArticles = Math.floor(Math.random() * 3) + 3;
-    var obj = {
-      id: (i+1),
-      articles: []
+    var objR = {
+      id: (j + 1),
+      articles: null
     }
-    for (var j = 1; j<numArticles; j++) {
-      obj.articles.push(pickArticle());
-    }
-    restaurants.push(obj);
+    objR.articles = generateArticles(numArticles);
+    restaurants.push(objR);
   }
 
-  db.Restaurant.insertMany(restaurants)
-    .then((docs) => {
-      console.log("Restaurants successfully written to database: ", docs);
+  Restaurant.insertMany(restaurants)
+    .then(()=> {
+      console.log('Restaurants successfully inserted.')
     })
     .catch((err) => {
       console.log(err);
-    });
-}
-
-var generateArticles = function(num) {
-  var articles = [];
-  for (var i = 0; i<num; i++) {
-    var obj = {
-      id: (i+1),
-      image: `https://creidfecimages.s3-us-west-1.amazonaws.com/photo${i+1}.jpeg`,
-      title: faker.lorem.words(),
-      body: faker.lorem.paragraphs()
-    }
-    articles.push(obj);
-  }
-  Article.insertMany(articles)
-    .then((docs) => {
-      console.log("Articles successfully written to database: ", docs);
     })
-    .catch((err) => {
-      console.log(err);
-    });
 }
 
-// generateArticles(20);
-
-
-// module.exports.generateRestaurants = generateRestaurants;
-// module.exports.generateArticles = generateArticles;
-
-// test seeding with node
-// var rests = generateRestaurants(2);
-// var arts = generateArticles(2);
+generateRestaurants(100);
