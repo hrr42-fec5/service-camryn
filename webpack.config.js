@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: './client/app.jsx',
+  entry: './client/App.jsx',
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'public')

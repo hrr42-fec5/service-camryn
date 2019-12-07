@@ -9,7 +9,7 @@ var generateRestaurants = function(numR) {
   var generateArticles = function(numA) {
     var arts = [];
     for (var i = 0; i<numA; i++) {
-      var imgId = Math.floor(Math.random() * 20);
+      var imgId = Math.floor(Math.random() * 20 + 1);
       var objA = {
         image: `https://creidfecimages.s3-us-west-1.amazonaws.com/photo${imgId}.jpeg`,
         title: faker.lorem.words(),
