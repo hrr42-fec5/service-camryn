@@ -1,15 +1,11 @@
 const faker = require('faker');
+const Article = require('./schema.js');
 
-// generate 100 restaurant records
-  // id increments 1-100
-  // articles range from 4-6 per restaurant & number from 1-20
-// generate 20 articles
-  // id increments 1-20
-  // image
-  // title
-  // body
+var pickArticle = function () {
+  return Math.floor(Math.random() * 20);
+}
 
-var generateRestaurants = function(num, cb) {
+var generateRestaurants = function(num) {
   var restaurants = [];
   for (var i = 0; i<num; i++) {
     var numArticles = Math.floor(Math.random() * 3) + 3;
@@ -22,15 +18,17 @@ var generateRestaurants = function(num, cb) {
     }
     restaurants.push(obj);
   }
-  // cb(restaurants);
-  return restaurants;
+
+  db.Restaurant.insertMany(restaurants)
+    .then((docs) => {
+      console.log("Restaurants successfully written to database: ", docs);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
-var pickArticle = function () {
-  return Math.floor(Math.random() * 20);
-}
-
-var generateArticles = function(num, cb) {
+var generateArticles = function(num) {
   var articles = [];
   for (var i = 0; i<num; i++) {
     var obj = {
@@ -41,12 +39,21 @@ var generateArticles = function(num, cb) {
     }
     articles.push(obj);
   }
-  // cb(articles);
-  return articles;
+  Article.insertMany(articles)
+    .then((docs) => {
+      console.log("Articles successfully written to database: ", docs);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
+
+// generateArticles(20);
+
+
+// module.exports.generateRestaurants = generateRestaurants;
+// module.exports.generateArticles = generateArticles;
 
 // test seeding with node
 // var rests = generateRestaurants(2);
 // var arts = generateArticles(2);
-
-// console.log('restaurants: ', rests, 'articles: ', arts);
