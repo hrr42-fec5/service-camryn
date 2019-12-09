@@ -4,6 +4,11 @@ import $ from 'jquery';
 
 import Mentions from './Mentions.jsx';
 
+import styled from 'styled-components';
+import Box from './styles/Box.jsx';
+import HeaderText from './styles/HeaderText.jsx';
+import Button from './styles/Button.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -49,20 +54,20 @@ class App extends React.Component {
       )
     } else if (this.state.showAll === false) {
       return (
-        <div>
-          <div className="component-title" >Zagat mentions</div>
+        <Box>
+        <HeaderText >Zagat mentions of this restaurant</HeaderText>
           <Mentions articles={this.state.articles.slice(0,2)}/>
-          <button type="button" onClick={this.handleClick.bind(this)}>Show All ({this.state.articles.length})</button>
-        </div>
+          <Button type="button" onClick={this.handleClick.bind(this)}>Show All ({this.state.articles.length})</Button>
+        </Box>
       )
     }
     else if (this.state.showAll === true) {
       return (
-        <div>
-          <div className="component-title" >Zagat mentions</div>
+        <Box>
+          <HeaderText >Zagat mentions of this restaurant</HeaderText>
           <Mentions articles={this.state.articles}/>
-          <button type="button" onClick={this.handleClick.bind(this)}>Show Less</button>
-        </div>
+          <Button type="button" onClick={this.handleClick.bind(this)}>Show Less</Button>
+        </Box>
       );
     }
   }
