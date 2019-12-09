@@ -14,4 +14,5 @@ export default styled.button`
   letter-spacing: .061em;
   line-height: 15px;
   display: inline-block;
+  cursor: pointer;
 `;
