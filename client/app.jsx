@@ -25,7 +25,7 @@ class App extends React.Component {
 
     $.ajax({
       type: "GET",
-      url: `/api/restaurants/${id}`,
+      url: `http://localhost:3003/api/restaurants/${id}`,
       success: (data) => {
         console.log("Got the articles...");
         this.setState({
@@ -73,4 +73,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app2"));

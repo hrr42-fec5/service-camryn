@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3003;
+const cors = require('cors');
 const db = require('../database/index.js');
 const Restaurant = require('../database/schema.js');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
