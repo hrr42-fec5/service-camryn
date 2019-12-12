@@ -5,9 +5,38 @@ import $ from 'jquery';
 import Mentions from './Mentions.jsx';
 
 import styled from 'styled-components';
-import Box from './styles/Box.jsx';
-import HeaderText from './styles/HeaderText.jsx';
-import Button from './styles/Button.jsx';
+
+const Box = styled.section`
+  padding: 15px 40px 15px 40px;
+  background-color: rgb(255,255,255);
+  width: 750px;
+  text-align: center;
+`;
+
+const HeaderText = styled.h1`
+  text-align: left;
+  padding-top: 10px;
+  font: 16px/24px 'Calibre-Semibold';
+  letter-spacing: .086em;
+  color: rgb(96,97,97);
+  text-transform: uppercase;
+`;
+
+const Button = styled.button`
+  border: 2px solid #b70038;
+  height: 40px;
+  width:  200px;
+  text-align: center;
+  padding-top: 7px;
+  font: 16px/24px 'Calibre-Medium';
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #b70038;
+  letter-spacing: .061em;
+  line-height: 15px;
+  display: inline-block;
+  cursor: pointer;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -27,12 +56,10 @@ class App extends React.Component {
       type: "GET",
       url: `http://localhost:3003/api/restaurants/${id}`,
       success: (data) => {
-        console.log("Got the articles...");
         this.setState({
           articles: data.articles,
           showAll: false
         })
-        // console.log(this.state.articles);
       },
       error: (error) => {
         console.log("Error getting articles: ", error);
