@@ -7,6 +7,9 @@ import Mentions from './Mentions.jsx';
 import styled from 'styled-components';
 
 const Box = styled.section`
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
   padding: 15px 40px 15px 40px;
   background-color: rgb(255,255,255);
   width: 750px;
